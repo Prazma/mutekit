@@ -1,31 +1,172 @@
 <!DOCTYPE html>
 <html>
 	<head>
-		<title>Viberaser</title>
+		<title>ResoMute</title>
 		<meta name="viewport" content="width=device-width, user-scalable=no">
 		<meta name="" content="Make your personal enviroment silent with one app.">
 		<style>
+			html {
+				-webkit-touch-callout: none;
+				-webkit-user-select: none;
+				-khtml-user-select: none;
+				-moz-user-select: none;
+				-ms-user-select: none;
+				user-select: none;
+			}
 			body {
 				background: #ffffff;
 				text-align: center;
 				font-family: sans-serif;
 				margin: 0;
+				transition: 0.5s;
+				-webkit-transition: 0.5s;
 			}
 			#wav {
 				background: transparent;
 				border: solid;
-				border-color: #39e7d9;
+				border-color: #bfbfbf;
 				border-width: 7px;
-				height: 150px;
-				width: 150px;
+				height: 0px;
+				width: 0px;
 				border-radius: 50%;
 				margin-right: auto;
 				margin-left: auto;
 				margin-top: 50px;
+				box-shadow: inset 0px 0px 10px #252525;
+				transition: 0.5s;
+				-webkit-transition: 0.5s;
+			}
+			
+			.switch {
+				position: relative;
+				display: inline-block;
+				width: 60px;
+				height: 34px;
+			}
+			input:checked + .slider {
+				background-color: #2196F3;
+			}
+			input:focus + .slider {
+				box-shadow: 0 0 1px #2196F3;
+			}
+			.switch input {display:none;}
+			.slider.round {
+				border-radius: 34px;
+			}
+			.slider.round:before {
+				border-radius: 50%;
+			}
+			input:checked + .slider:before {
+				-webkit-transform: translateX(26px);
+				-ms-transform: translateX(26px);
+				transform: translateX(26px);
+			}
+			.slider {
+				position: absolute;
+				cursor: pointer;
+				top: 0;
+				left: 0;
+				right: 0;
+				bottom: 0;	
+				background-color: #ccc;
+				-webkit-transition: .4s;
+				transition: .4s;
+			}
+			.slider:before {
+				position: absolute;
+				content: "";
+				height: 26px;
+				width: 26px;
+				left: 4px;
+				bottom: 4px;
+				background-color: white;
+				-webkit-transition: .4s;
+				transition: .4s;
+			}
+			input:checked + .slider {
+				background-color: #2196F3;
+			}
+			input:focus + .slider {
+				box-shadow: 0 0 1px #2196F3;
+			}
+			#topwid {
+				margin-top: 50px;
+			}
+			#statr {
+				position: fixed;
+				top: 0;
+				width: 100%;
+				height: 100vh;
+				background: rgba(255, 255, 255, 0.91);
+				display: none;
+				opacity: 0;
+				transition: 1s;
+				-webkit-transition: 1s;
+			}
+			.instatr {
+				display: block;
+				position: absolute;
+				top: 0;
+				left: 0;
+				right: 0;
+			}
+			#buttis {
+				opacity: 0;
+				transition: 1s;
+				-webkit-transition: 1s;
 			}
 		</style>
 	</head>
 	<body>
-		<div id="wav"></div>
+		<div>
+			<div id="wav"></div>
+			<div id="buttis">
+				<div id="topwid">
+					<label class="switch">
+						<input type="checkbox" onclick="tog()">
+						<div class="slider round"></div>
+					</label>
+				</div>
+			</div>
+			<div id="statr"><div class="instatr" style="margin-top: 60px; color: #a1a1a1;">Please Wait...</div></div>
+			<div style="display: none"><span id="tog1">0</span></div>
+		</div>
+		<script>
+			setTimeout( function () {
+				document.getElementById("wav").style.width = "150px";
+				document.getElementById("wav").style.height = "150px";
+			}, 500);
+			setTimeout( function () {
+				document.getElementById("wav").style.borderColor = "#39e7d9";
+				document.getElementById("wav").style.boxShadow = "inset 0px 0px 20px #39e7d9";
+			}, 1000);
+			setTimeout( function () {
+				document.getElementById("wav").style.borderColor = "#bfbfbf";
+				document.getElementById("wav").style.boxShadow = "inset 0px 0px 10px #252525";
+			}, 1500);
+			setTimeout( function () {
+				document.getElementById("buttis").style.opacity = "1";
+			}, 2500);
+			function tog() {
+				var statr = document.getElementById("tog1").innerHTML;
+				if(statr==0){
+					document.getElementById("tog1").innerHTML = "1";
+					document.getElementById("statr").style.display = "block";
+					setTimeout( function () {
+						document.getElementById("statr").style.opacity = "1";
+					}, 500)
+					setTimeout( function () {
+						document.getElementById("statr").style.opacity = "0";
+						document.getElementById("wav").style.borderColor = "#39e7d9";
+						document.getElementById("wav").style.boxShadow = "inset 0px 0px 20px #39e7d9";
+						document.getElementById("statr").style.display = "none";
+					}, 2500)
+				}else{
+					document.getElementById("tog1").innerHTML = "0";
+					document.getElementById("wav").style.borderColor = "#bfbfbf";
+					document.getElementById("wav").style.boxShadow = "inset 0px 0px 10px #252525";
+				}
+			}
+		</script>
 	</body>
 </html>
