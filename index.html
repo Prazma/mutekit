@@ -118,10 +118,30 @@
 				transition: 1s;
 				-webkit-transition: 1s;
 			}
+			#optbar {
+				position: fixed;
+				bottom: 0px;
+			}
+			.btndem {
+				background: #484e57;
+				border: none;
+				padding: 7px;
+				font-size: 20px;
+				min-width: 40px;
+				min-height: 40px;
+				margin-bottom: 10px;
+				color: white;
+				font-weight: bold;
+				border-radius: 50%;
+				margin-left: 10px;
+			}
 		</style>
 	</head>
 	<body>
 		<div>
+			<div id="optbar">
+				<button class="btndem">?</button>
+			</div>
 			<div id="wav"></div>
 			<div id="buttis">
 				<div id="topwid">
@@ -131,7 +151,9 @@
 					</label>
 				</div>
 			</div>
-			<div id="statr"><div class="instatr" style="margin-top: 60px; color: #a1a1a1;">Please Wait...</div></div>
+			<div id="statr">
+				<div class="instatr" style="margin-top: 60px; color: #a1a1a1;">Please Wait...</div>
+			</div>
 			<div style="display: none"><span id="tog1">0</span></div>
 		</div>
 		<script>
@@ -149,7 +171,7 @@
 			}, 1500);
 			setTimeout( function () {
 				document.getElementById("buttis").style.opacity = "1";
-			}, 2500);
+			}, 2300);
 			function tog() {
 				var statr = document.getElementById("tog1").innerHTML;
 				if(statr==0){
@@ -160,10 +182,12 @@
 					}, 500)
 					setTimeout( function () {
 						document.getElementById("statr").style.opacity = "0";
+					}, 2500)
+					setTimeout( function () {
 						document.getElementById("wav").style.borderColor = "#39e7d9";
 						document.getElementById("wav").style.boxShadow = "inset 0px 0px 20px #39e7d9";
 						document.getElementById("statr").style.display = "none";
-					}, 2500)
+					}, 2900)
 				}else{
 					document.getElementById("tog1").innerHTML = "0";
 					document.getElementById("wav").style.borderColor = "#bfbfbf";
