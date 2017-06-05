@@ -24,7 +24,7 @@
 				transition: 0.5s;
 				-webkit-transition: 0.5s;
 			}
-			#wav {
+			.ring {
 				background: transparent;
 				border: solid;
 				border-color: #bfbfbf;
@@ -122,7 +122,7 @@
 				bottom: 0px;
 			}
 			.btndem {
-				background: rgba(72, 78, 87, 0.22);
+				background: rgba(255, 255, 255, 0.56);
 				border: none;
 				padding: 7px;
 				font-size: 20px;
@@ -157,7 +157,7 @@
 	</head>
 	<body>
 		<div>
-			<div id="wav"></div>
+			<div id="wav" class="ring"></div>
 			<div id="buttis">
 				<div id="topwid">
 					<label class="switch">
@@ -170,9 +170,12 @@
 				<div class="instatr" style="margin-top: 60px; color: #a1a1a1;">Please Wait...</div>
 			</div>
 			<div id="db" style="display: none;">
+				<div id="res" class="ring" style="border-radius: 30%;"></div>
 				<br>
-				<h1>0<span> DB</span></h1>
-				<span style="color: #00bcd4;">Very Silent</span>
+				<span>In Maintenence</span>
+			</div>
+			<div>
+				
 			</div>
 			<div style="display: none"><span id="tog1">0</span><span id="delox">0</span></div>
 		</div>
@@ -180,14 +183,20 @@
 			setTimeout( function () {
 				document.getElementById("wav").style.width = "150px";
 				document.getElementById("wav").style.height = "150px";
+				document.getElementById("res").style.width = "150px";
+				document.getElementById("res").style.height = "150px";
 			}, 500);
 			setTimeout( function () {
 				document.getElementById("wav").style.borderColor = "#39e7d9";
 				document.getElementById("wav").style.boxShadow = "inset 0px 0px 20px #39e7d9";
+				document.getElementById("res").style.borderColor = "#39e7d9";
+				document.getElementById("res").style.boxShadow = "inset 0px 0px 20px #39e7d9";
 			}, 1000);
 			setTimeout( function () {
 				document.getElementById("wav").style.borderColor = "#bfbfbf";
 				document.getElementById("wav").style.boxShadow = "inset 0px 0px 10px #252525";
+				document.getElementById("res").style.borderColor = "#ffffff";
+				document.getElementById("res").style.boxShadow = "inset 0px 0px 10px #bfbfbf";
 			}, 1500);
 			setTimeout( function () {
 				document.getElementById("buttis").style.opacity = "1";
