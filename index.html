@@ -39,7 +39,6 @@
 				transition: 0.5s;
 				-webkit-transition: 0.5s;
 			}
-			
 			.switch {
 				position: relative;
 				display: inline-block;
@@ -133,6 +132,7 @@
 				color: #252525;
 				border-radius: 50%;
 				margin-left: 10px;
+				outline: none;
 			}
 			#db {
 				position: fixed;
@@ -143,15 +143,20 @@
 				color: #ffffff;
 				font-size: 20px;
 			}
+			.probtn {
+				font-size: 19px;
+				background: rgba(255, 255, 255, 0.75);
+				color: #000000;
+				border-radius: 6px;
+				border: none;
+				padding: 5px;
+				outline: none;
+				font-weight: bold;
+			}
 		</style>
 	</head>
 	<body>
 		<div>
-			<div id="optbar">
-				<button class="btndem">?</button>
-				<button class="btndem"><img src="https://www.iconfinder.com/data/icons/social-productivity-line-art-2/128/notification-256.png" height="20px"></button>
-				<button class="btndem"><img src="https://www.iconfinder.com/data/icons/material-core/20/settings-128.png" height="20px"></button>
-			</div>
 			<div id="wav"></div>
 			<div id="buttis">
 				<div id="topwid">
@@ -165,9 +170,11 @@
 				<div class="instatr" style="margin-top: 60px; color: #a1a1a1;">Please Wait...</div>
 			</div>
 			<div id="db" style="display: none;">
+				<br>
 				<h1>0<span> DB</span></h1>
+				<span style="color: #00bcd4;">Very Silent</span>
 			</div>
-			<div style="display: none"><span id="tog1">0</span></div>
+			<div style="display: none"><span id="tog1">0</span><span id="delox">0</span></div>
 		</div>
 		<script>
 			setTimeout( function () {
@@ -207,6 +214,21 @@
 					document.getElementById("wav").style.boxShadow = "inset 0px 0px 10px #252525";
 				}
 			}
+			function laudb() {
+				var delon = document.getElementById("delox").innerHTML;
+				if(delon==0) {
+					document.getElementById("db").style.display = "";
+					document.getElementById("delox").innerHTML = "1"
+				}else {
+					document.getElementById("db").style.display = "none";
+					document.getElementById("delox").innerHTML = "0"
+				}
+			}
 		</script>
+		<div id="optbar">
+			<button class="btndem">?</button>
+			<button class="btndem" onclick="laudb()"><img src="https://www.iconfinder.com/data/icons/social-productivity-line-art-2/128/notification-256.png" height="20px"></button>
+			<button class="btndem"><img src="https://www.iconfinder.com/data/icons/material-core/20/settings-128.png" height="20px"></button>
+		</div>
 	</body>
 </html>
